@@ -3,103 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ramil Flaviano Jr | Elite Virtual Assistant</title>
+    <title>The Art of Assistance | Virtual Portfolio</title>
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts for that Editorial Look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
     
-    <!-- Font Awesome -->
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* --- VARIABLES & RESET --- */
         :root {
-            --bg-color: #0f172a;
-            --bg-accent: #1e293b;
-            --primary: #6366f1;
-            --primary-hover: #4f46e5;
-            --secondary: #06b6d4;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --glass: rgba(30, 41, 59, 0.7);
-            --border: rgba(255, 255, 255, 0.1);
+            --bg-color: #F7F5F3; /* Warm Off-White */
+            --text-primary: #1A1A1A; /* Soft Black */
+            --text-secondary: #555555;
+            --accent: #D45D3A; /* Terracotta / Burnt Orange */
+            --line-color: #D1D1D1;
+            --serif: 'Cormorant Garamond', serif;
+            --sans: 'Manrope', sans-serif;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
             background-color: var(--bg-color);
-            color: var(--text-main);
-            overflow-x: hidden;
+            color: var(--text-primary);
+            font-family: var(--sans);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
+        /* --- Typography --- */
         h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            line-height: 1.2;
+            font-family: var(--serif);
+            font-weight: 600;
+            line-height: 1.1;
         }
 
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; }
+        .display-text {
+            font-size: clamp(3rem, 8vw, 6rem);
+            letter-spacing: -0.03em;
+        }
 
-        /* --- UTILITIES --- */
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            right: -40px;
+            top: 50%;
+            width: 30px;
+            height: 1px;
+            background-color: var(--accent);
+        }
+
+        /* --- Layout Utilities --- */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
-        .gradient-text {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 14px 32px;
-            background: var(--primary);
-            color: white;
-            font-weight: 600;
-            border-radius: 50px;
-            box-shadow: 0 10px 20px -10px var(--primary);
-            border: 1px solid transparent;
-        }
-
-        .btn:hover {
-            background: var(--primary-hover);
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid var(--text-muted);
-            box-shadow: none;
-        }
-
-        .btn-outline:hover {
-            border-color: var(--text-main);
-            background: rgba(255,255,255,0.05);
-        }
-
-        /* --- HEADER --- */
+        /* --- Header --- */
         header {
+            padding: 2rem 0;
             position: fixed;
-            top: 0;
             width: 100%;
-            z-index: 1000;
-            padding: 1.5rem 0;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(247, 245, 243, 0.8);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
         nav {
@@ -109,371 +102,349 @@
         }
 
         .logo {
+            font-family: var(--serif);
             font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
+            font-weight: bold;
+            letter-spacing: -0.02em;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
+        .cta-btn {
+            padding: 0.8rem 1.5rem;
+            background-color: var(--text-primary);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
         }
 
-        .nav-links a {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            font-weight: 500;
+        .cta-btn:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
         }
 
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        /* --- HERO SECTION --- */
+        /* --- Hero Section --- */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            position: relative;
-            overflow: hidden;
             padding-top: 80px;
-        }
-
-        /* Background Glow Effect */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -20%;
-            right: -10%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, rgba(15,23,42,0) 70%);
-            border-radius: 50%;
-            z-index: -1;
+            position: relative;
         }
 
         .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
+            z-index: 2;
         }
 
-        .hero-text h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-text p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-            max-width: 90%;
-        }
-
-        .hero-img-container {
+        .hero-image-wrapper {
             position: relative;
+            height: 600px;
+            overflow: hidden;
+            border-radius: 200px 200px 0 0; /* Arch shape */
         }
 
         .hero-img {
             width: 100%;
-            height: auto;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            /* Placeholder image styling */
-            background: var(--bg-accent);
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-        
-        .hero-img img {
-            width: 100%;
             height: 100%;
             object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.5s ease;
         }
 
-        /* --- SKILLS SECTION --- */
-        .section {
-            padding: 6rem 0;
+        .hero-image-wrapper:hover .hero-img {
+            filter: grayscale(0%);
         }
 
-        .section-header {
-            text-align: center;
+        .hero-tag {
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* --- About / Value --- */
+        .marquee-container {
+            padding: 4rem 0;
+            border-top: 1px solid var(--line-color);
+            border-bottom: 1px solid var(--line-color);
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-text {
+            font-family: var(--serif);
+            font-size: 2rem;
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+            color: var(--text-secondary);
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* --- Skills Section (Modern Art Style) --- */
+        .skills-section {
+            padding: 8rem 0;
+        }
+
+        .skill-category {
             margin-bottom: 4rem;
         }
 
-        .section-header h2 {
-            font-size: 2.5rem;
+        .category-title {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-pill {
+            padding: 0.8rem 1.5rem;
+            border: 1px solid var(--text-primary);
+            border-radius: 0; /* Sharp corners */
+            background: transparent;
+            transition: all 0.3s ease;
+            cursor: crosshair;
+        }
+
+        .skill-pill:hover {
+            background: var(--text-primary);
+            color: #fff;
+            transform: rotate(-3deg);
+        }
+
+        /* --- Services Grid --- */
+        .services {
+            padding: 6rem 0;
+            background-color: #fff;
+        }
+
+        .service-card {
+            padding: 3rem;
+            border-left: 1px solid var(--line-color);
+            transition: background 0.3s;
+        }
+
+        .service-card:hover {
+            background-color: var(--bg-color);
+        }
+
+        .service-number {
+            font-family: var(--serif);
+            font-size: 3rem;
+            color: var(--line-color);
             margin-bottom: 1rem;
         }
 
-        .section-header p {
-            color: var(--text-muted);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-card {
-            background: var(--bg-accent);
-            padding: 2rem;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            transition: 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-            box-shadow: 0 10px 30px -10px rgba(99,102,241,0.3);
-        }
-
-        .skill-icon {
-            font-size: 2rem;
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .skill-card h3 {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .skill-card p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        /* --- CALENDLY / CTA SECTION --- */
-        .cta-section {
-            background: linear-gradient(135deg, var(--bg-accent), var(--bg-color));
-            border-top: 1px solid var(--border);
+        /* --- Calendly Section --- */
+        .booking-section {
+            padding: 8rem 0;
+            background-color: var(--text-primary);
+            color: #fff;
             text-align: center;
         }
 
-        .cta-box {
-            background: rgba(255,255,255,0.03);
-            padding: 4rem 2rem;
-            border-radius: 24px;
-            border: 1px solid var(--border);
-            max-width: 800px;
-            margin: 0 auto;
+        .booking-section h2 {
+            color: #fff;
         }
 
-        .cta-box h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+        .calendly-wrapper {
+            margin-top: 3rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 1rem;
         }
 
-        .cta-box p {
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-        }
-
-        /* --- FOOTER --- */
+        /* --- Footer --- */
         footer {
             padding: 3rem 0;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid var(--line-color);
             text-align: center;
-            color: var(--text-muted);
             font-size: 0.9rem;
+            color: var(--text-secondary);
         }
 
-        .social-links {
-            margin-bottom: 1.5rem;
-        }
-
-        .social-links a {
-            font-size: 1.2rem;
-            margin: 0 10px;
-            color: var(--text-main);
-        }
-
-        .social-links a:hover {
-            color: var(--primary);
-        }
-
-        /* --- RESPONSIVE --- */
+        /* --- Mobile Responsiveness --- */
         @media (max-width: 768px) {
-            .hero-content {
+            .grid-2 {
                 grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-
-            .nav-links {
-                display: none; /* Simple hide for mobile for this demo */
+                gap: 2rem;
             }
             
-            .hero-img {
-                min-height: 300px;
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding-top: 120px;
+            }
+
+            .hero-image-wrapper {
+                height: 400px;
+                margin-top: 2rem;
+            }
+            
+            .display-text {
+                font-size: 3rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVIGATION -->
+    <!-- Navigation -->
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo">Ramil F<span style="color:var(--primary)">.</span></a>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <a href="#contact" class="btn">Book Consultation</a>
+                <div class="logo">ALEXA.VA</div>
+                <a href="#contact" class="cta-btn">Book Consultation</a>
             </nav>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section id="home" class="hero">
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <p class="gradient-text" style="font-weight: 600; margin-bottom: 10px; letter-spacing: 1px;">VIRTUAL ASSISTANT SERVICES</p>
-                    <h1>Efficiency Meets <br> <span class="gradient-text">Excellence.</span></h1>
-                    <p>Hi, I'm <strong>Ramil Flaviano Jr</strong>. I help busy entrepreneurs reclaim their time by handling administrative chaos, managing workflows, and optimizing day-to-day operations.</p>
-                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                        <a href="#contact" class="btn">Book 30-min Call</a>
-                        <a href="#skills" class="btn btn-outline">View Skills</a>
+            <div class="grid-2">
+                <div class="hero-content" data-aos="fade-right" data-aos-duration="1000">
+                    <span class="hero-tag">Virtual Executive Assistant</span>
+                    <h1 class="display-text">Chaos,<br>Curated.</h1>
+                    <p style="margin-top: 1.5rem; font-size: 1.1rem; color: var(--text-secondary);">
+                        I don't just manage calendars; I design time. 
+                        Elevating your business operations with the precision of an artist.
+                    </p>
+                    <div style="margin-top: 2.5rem;">
+                        <a href="#skills" style="border-bottom: 1px solid var(--text-primary); text-decoration: none; color: var(--text-primary); padding-bottom: 5px;">View My Palette (Skills)</a>
                     </div>
                 </div>
-                <div class="hero-img-container">
-                    <div class="hero-img">
-                        <!-- REPLACE THIS IMAGE URL with your actual photo -->
-                        <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1742&q=80" alt="Ramil Flaviano Jr Workspace">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SKILLS SECTION -->
-    <section id="skills" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Technical <span class="gradient-text">Expertise</span></h2>
-                <p>A comprehensive toolkit designed to scale your business operations.</p>
-            </div>
-
-            <div class="skills-grid">
-                <!-- Skill 1 -->
-                <div class="skill-card">
-                    <i class="fa-solid fa-calendar-check skill-icon"></i>
-                    <h3>Calendar & Email</h3>
-                    <p>Inbox zero strategies, complex scheduling, travel arrangements, and meeting coordination.</p>
-                </div>
-                <!-- Skill 2 -->
-                <div class="skill-card">
-                    <i class="fa-solid fa-database skill-icon"></i>
-                    <h3>Data Management</h3>
-                    <p>CRM updates (HubSpot, Salesforce), data entry, spreadsheet organization, and research.</p>
-                </div>
-                <!-- Skill 3 -->
-                <div class="skill-card">
-                    <i class="fa-solid fa-wand-magic-sparkles skill-icon"></i>
-                    <h3>Social Media</h3>
-                    <p>Content scheduling (Buffer/Hootsuite), community engagement, and basic graphic design (Canva).</p>
-                </div>
-                <!-- Skill 4 -->
-                <div class="skill-card">
-                    <i class="fa-solid fa-headset skill-icon"></i>
-                    <h3>Customer Support</h3>
-                    <p>Live chat support, ticket management (Zendesk), and high-touch client communication.</p>
-                </div>
-                <!-- Skill 5 -->
-                <div class="skill-card">
-                    <i class="fa-brands fa-wordpress skill-icon"></i>
-                    <h3>Web Management</h3>
-                    <p>Basic WordPress updates, blog posting, content formatting, and plugin management.</p>
-                </div>
-                <!-- Skill 6 -->
-                <div class="skill-card">
-                    <i class="fa-solid fa-file-invoice-dollar skill-icon"></i>
-                    <h3>Basic Bookkeeping</h3>
-                    <p>Invoicing, expense tracking, and preparing basic reports using QuickBooks or Xero.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CALL TO ACTION / CALENDLY -->
-    <section id="contact" class="section cta-section">
-        <div class="container">
-            <div class="cta-box">
-                <i class="fa-regular fa-handshake" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
-                <h2>Let's Scale Your Business</h2>
-                <p>Ready to offload your tasks? Schedule a free 30-minute discovery consultation to discuss your needs and how I can help you move forward.</p>
                 
-                <!-- CALENDLY BUTTON LINK -->
-                <!-- IMPORTANT: Replace the href below with your specific Calendly URL -->
-                <a href="https://calendly.com/" target="_blank" class="btn" style="font-size: 1.1rem;">
-                    <i class="fa-regular fa-calendar" style="margin-right: 8px;"></i> 
-                    Schedule 30-min Discovery Call
-                </a>
+                <!-- Artistic Image Frame -->
+                <div class="hero-image-wrapper" data-aos="fade-left" data-aos-duration="1000">
+                    <!-- Placeholder image from Unsplash -->
+                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1742&q=80" alt="Professional Workspace" class="hero-img">
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- Animated Marquee -->
+    <div class="marquee-container">
+        <div class="marquee-text">
+            Admin Support &nbsp; • &nbsp; Project Management &nbsp; • &nbsp; Travel Logistics &nbsp; • &nbsp; Inbox Zero &nbsp; • &nbsp; CRM Management &nbsp; • &nbsp; 
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">The Collection</h2>
+            
+            <div class="grid-2">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-number">01</div>
+                    <h3>Executive Administration</h3>
+                    <p style="margin-top: 1rem; color: var(--text-secondary);">Calendar tetris, inbox detoxification, and gatekeeping. I protect your time so you can create.</p>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-number">02</div>
+                    <h3>Project Orchestration</h3>
+                    <p style="margin-top: 1rem; color: var(--text-secondary);">Turning abstract ideas into Trello boards and Asana timelines. I ensure the vision meets the deadline.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section (The Request) -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <div class="grid-2">
+                <div data-aos="fade-right">
+                    <h2 class="section-title">Tools & <br>Technique</h2>
+                    <p>A modern assistant requires a modern stack. Here is my toolkit.</p>
+                </div>
+
+                <div>
+                    <!-- Organization -->
+                    <div class="skill-category" data-aos="fade-left" data-aos-delay="100">
+                        <h4 class="category-title">Organization & CRM</h4>
+                        <div class="skill-tags">
+                            <div class="skill-pill">Notion</div>
+                            <div class="skill-pill">Asana</div>
+                            <div class="skill-pill">Monday.com</div>
+                            <div class="skill-pill">Salesforce</div>
+                            <div class="skill-pill">HubSpot</div>
+                        </div>
+                    </div>
+
+                    <!-- Creative -->
+                    <div class="skill-category" data-aos="fade-left" data-aos-delay="200">
+                        <h4 class="category-title">Creative & Content</h4>
+                        <div class="skill-tags">
+                            <div class="skill-pill">Canva Pro</div>
+                            <div class="skill-pill">WordPress</div>
+                            <div class="skill-pill">MailChimp</div>
+                            <div class="skill-pill">Copywriting</div>
+                        </div>
+                    </div>
+
+                    <!-- Communication -->
+                    <div class="skill-category" data-aos="fade-left" data-aos-delay="300">
+                        <h4 class="category-title">Communication</h4>
+                        <div class="skill-tags">
+                            <div class="skill-pill">Slack</div>
+                            <div class="skill-pill">Zoom</div>
+                            <div class="skill-pill">Google Workspace</div>
+                            <div class="skill-pill">Microsoft 365</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendly Booking Section (The Request) -->
+    <section id="contact" class="booking-section">
+        <div class="container">
+            <span class="hero-tag" style="color: var(--accent); margin-bottom: 1rem; display: block;">Let's Collaborate</span>
+            <h2 class="display-text" style="font-size: 3rem;">Discovery Consultation</h2>
+            <p style="margin-top: 1rem; opacity: 0.8;">30 Minutes. Zero Obligation. Infinite Potential.</p>
+
+            <div class="calendly-wrapper" data-aos="zoom-in">
+                <!-- Calendly inline widget begin -->
+                <!-- NOTE: Replace 'https://calendly.com/YOUR_LINK' with your actual 30min meeting link -->
+                <div class="calendly-inline-widget" data-url="https://calendly.com/" style="min-width:320px;height:700px;"></div>
+                <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+                <!-- Calendly inline widget end -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="social-links">
-                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                <a href="#"><i class="fa-solid fa-envelope"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <p>&copy; 2024 Alexa Virtual Assistance. Designed with intention.</p>
+            <div style="margin-top: 1rem; font-size: 1.2rem;">
+                <a href="#" style="color: var(--text-primary); margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
+                <a href="#" style="color: var(--text-primary); margin: 0 10px;"><i class="fab fa-instagram"></i></a>
+                <a href="#" style="color: var(--text-primary); margin: 0 10px;"><i class="far fa-envelope"></i></a>
             </div>
-            <p>&copy; 2024 Ramil Flaviano Jr. All Rights Reserved.</p>
         </div>
     </footer>
 
+    <!-- Initialize Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Smooth Scroll for Safari/Older Browsers fallback
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Simple Scroll Reveal Animation
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        });
-
-        // Apply initial styles for animation
-        document.querySelectorAll('.skill-card, .hero-text, .cta-box').forEach((el) => {
-            el.style.opacity = 0;
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'all 0.6s ease-out';
-            observer.observe(el);
+        AOS.init({
+            once: true, // Animations happen only once
+            offset: 100 // Offset (in px) from the original trigger point
         });
     </script>
 </body>
