@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramil Flaviano Jr | Virtual Assistant</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --bg-color: #0a0a0a;
+            --card-bg: rgba(30, 30, 30, 0.6);
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --accent-gold: #d4af37; /* Luxury Gold */
+            --accent-glow: rgba(212, 175, 55, 0.3);
+            --font-script: 'Great Vibes', cursive;
+            --font-body: 'Montserrat', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% 0%, #1a1a1a 0%, #0a0a0a 100%);
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3 {
+            font-family: var(--font-script);
+            font-weight: 400;
+            color: var(--accent-gold);
+        }
+
+        h2 {
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            font-family: var(--font-body);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 50px;
+            transition: var(--transition);
+            cursor: pointer;
+            background: transparent;
+        }
+
+        .btn:hover {
+            background: var(--accent-gold);
+            color: #000;
+            box-shadow: 0 0 20px var(--accent-glow);
+            transform: translateY(-3px);
+        }
+
+        /* --- HEADER --- */
+        header {
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-script);
+            font-size: 2rem;
+            color: var(--text-main);
+        }
+        
+        .logo span { color: var(--accent-gold); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-size: 6rem;
+            line-height: 1.1;
+            margin-bottom: 10px;
+            animation: fadeInDown 1s ease forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            color: var(--text-main);
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.5s;
+        }
+
+        .hero-desc {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.8s;
+        }
+
+        /* --- SKILLS SECTION --- */
+        .skills {
+            padding: 100px 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-gold);
+            background: rgba(40, 40, 40, 0.8);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+
+        .skill-title {
+            font-family: var(--font-body); /* Keep titles readable */
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        /* --- CALENDLY / CTA SECTION --- */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-box {
+            background: rgba(18, 18, 18, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 60px;
+            border-radius: 20px;
+            display: inline-block;
+            border: 1px solid var(--accent-gold);
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.9rem;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* --- ANIMATIONS --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 3.5rem; }
+            h2 { font-size: 2.5rem; }
+            .cta-box { padding: 30px; width: 90%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Ramil <span>F.</span></div>
+                <!-- Simple Calendly Button in Nav -->
+                <a href="https://calendly.com/YOUR_CALENDLY_LINK_HERE" target="_blank" class="btn" style="padding: 8px 20px; font-size: 0.8rem;">Book Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-subtitle">Professional Virtual Assistant</div>
+            <h1>Ramil Flaviano Jr</h1>
+            <p class="hero-desc">
+                Providing high-quality, reliable administrative and creative support to help your business thrive in the digital age.
+            </p>
+            <div style="opacity: 0; animation: fadeInUp 1s ease forwards 1s;">
+                <a href="#skills" class="btn">Explore My Skills</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2>My Expertise</h2>
+            <p style="text-align: center;">Curated skills to streamline your operations.</p>
+            
+            <div class="skills-grid">
+                <!-- Skill 1 -->
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                    <div class="skill-title">Calendar Management</div>
+                    <p>Scheduling meetings, organizing appointments, and ensuring your day runs smoothly without conflict.</p>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+                    <div class="skill-title">Email Management</div>
+                    <p>Inbox zero strategies, categorizing priorities, and drafting professional responses on your behalf.</p>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-solid fa-database"></i></div>
+                    <div class="skill-title">Data Entry & Admin</div>
+                    <p>Accurate data processing, spreadsheet management, and maintaining organized digital records.</p>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <div class="skill-title">Market Research</div>
+                    <p>In-depth web research, lead generation, and competitor analysis to support your growth strategy.</p>
+                </div>
+
+                <!-- Skill 5 -->
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-brands fa-instagram"></i></div>
+                    <div class="skill-title">Social Media Support</div>
+                    <p>Scheduling posts, basic graphic creation (Canva), and community engagement management.</p>
+                </div>
+
+                <!-- Skill 6 -->
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-solid fa-headset"></i></div>
+                    <div class="skill-title">Customer Support</div>
+                    <p>Handling inquiries with empathy and professionalism to maintain high customer satisfaction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendly CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Let's Work Together</h2>
+                <p style="margin-bottom: 30px; color: #ccc;">
+                    Ready to reclaim your time? Schedule a free discovery call with me directly through Calendly.
+                </p>
+                <!-- Replace the # with your actual Calendly Link -->
+                <a href="https://calendly.com/YOUR_CALENDLY_LINK_HERE" target="_blank" class="btn" style="background: var(--accent-gold); color: #000;">
+                    <i class="fa-regular fa-calendar"></i> &nbsp; Schedule a Meeting
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="logo" style="font-size: 1.5rem; margin-bottom: 10px;">Ramil Flaviano Jr</div>
+            <p>&copy; 2023 Ramil Flaviano Jr. All Rights Reserved.</p>
+            
+            <div class="social-links">
+                <!-- Add your real social links here -->
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

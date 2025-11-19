@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramil Flaviano Jr. | Creative Virtual Assistant</title>
+    
+    <!-- Google Fonts: Poppins for a modern, fun, and clean look -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AOS Library for Scroll Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Color Palette - Pink & Fun */
+            --primary: #ff477e;       /* Hot Pink */
+            --secondary: #ff85a1;     /* Soft Pink */
+            --accent: #fbb1bd;        /* Pale Pink */
+            --dark: #332b30;          /* Dark Text */
+            --light: #fff0f3;         /* Background tint */
+            --white: #ffffff;
+            --fun-yellow: #ffbd00;    /* Pop of yellow for fun */
+            --gradient: linear-gradient(135deg, #ff477e 0%, #ff90b3 100%);
+            --shadow: 0 10px 30px rgba(255, 71, 126, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- Navigation --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -1px;
+        }
+
+        .logo span { color: var(--dark); }
+
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(255, 71, 126, 0.25);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10%;
+            position: relative;
+        }
+
+        .hero-text {
+            flex: 1;
+            padding-right: 2rem;
+        }
+
+        .hero-text h3 {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-img {
+            flex: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Fun organic blob shape for image background */
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: #ffe5ec;
+            border-radius: 45% 55% 70% 30% / 30% 30% 70% 70%;
+            z-index: -1;
+            animation: morph 8s ease-in-out infinite;
+        }
+
+        .hero-img img {
+            width: 400px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 8px solid var(--white);
+            box-shadow: var(--shadow);
+        }
+
+        @keyframes morph {
+            0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+            100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        }
+
+        /* --- Skills Section --- */
+        .section { padding: 5rem 10%; }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title .bar {
+            width: 80px;
+            height: 5px;
+            background: var(--primary);
+            margin: 0 auto;
+            border-radius: 10px;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .skill-card {
+            background: var(--white);
+            padding: 1.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            min-width: 180px;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .skill-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .skill-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h4 { font-weight: 600; }
+
+        /* --- Stats / Fun Facts --- */
+        .fun-banner {
+            background: var(--primary);
+            color: var(--white);
+            display: flex;
+            justify-content: space-around;
+            padding: 3rem 10%;
+            text-align: center;
+        }
+        
+        .stat h3 { font-size: 2.5rem; font-weight: 700; }
+        .stat p { font-size: 0.9rem; opacity: 0.9; }
+
+        /* --- Services --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-item {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 5px;
+            background: var(--gradient);
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .service-item h3 { margin-bottom: 1rem; color: var(--dark); }
+        .service-item p { color: #666; font-size: 0.95rem; }
+
+        /* --- CTA / Calendly --- */
+        .cta-section {
+            background: #fff;
+            text-align: center;
+            padding: 5rem 2rem;
+            margin: 2rem 10%;
+            border-radius: 40px;
+            background-image: radial-gradient(circle at top right, #fff0f3 20%, transparent 20%),
+                              radial-gradient(circle at bottom left, #fff0f3 20%, transparent 20%);
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .pulsing-btn {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 71, 126, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 71, 126, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 71, 126, 0); }
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--white);
+            color: #666;
+        }
+        .social-icons {
+            margin-bottom: 1rem;
+        }
+        .social-icons a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: var(--light);
+            color: var(--primary);
+            border-radius: 50%;
+            margin: 0 5px;
+            transition: 0.3s;
+        }
+        .social-icons a:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* --- Mobile Responsiveness --- */
+        @media (max-width: 768px) {
+            .hero { flex-direction: column-reverse; text-align: center; justify-content: center; padding-top: 2rem;}
+            .hero-text { padding-right: 0; margin-top: 2rem; }
+            .hero-img img { width: 280px; height: 280px; }
+            .blob { width: 320px; height: 320px; }
+            .hero-text h1 { font-size: 2.5rem; }
+            .nav-links { display: none; } /* Hidden for simplicity in this single file */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Ramil<span>.VA</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#services">Services</a></li>
+        </ul>
+        <a href="https://calendly.com/" target="_blank" class="btn-primary">Let's Talk!</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-text" data-aos="fade-right">
+            <h3>Hello, I'm Ramil Flaviano Jr.</h3>
+            <h1>Your New Favorite <span style="color:var(--primary)">Virtual Assistant</span></h1>
+            <p>I organize the chaos so you can focus on the magic. Expert in admin tasks, social media management, and keeping your business sparkling clean.</p>
+            
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: flex-start;">
+                <!-- Calendly Link -->
+                <a href="https://calendly.com/" target="_blank" class="btn-primary pulsing-btn">
+                    <i class="far fa-calendar-alt"></i> Book a Call
+                </a>
+                <a href="#services" style="padding: 0.7rem 1.5rem; border: 2px solid var(--primary); border-radius: 50px; color: var(--primary); font-weight: 600;">View Services</a>
+            </div>
+        </div>
+        
+        <div class="hero-img" data-aos="zoom-in">
+            <div class="blob"></div>
+            <!-- PLACEHOLDER IMAGE: Replace src with your actual photo URL -->
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ramil Flaviano Jr - Virtual Assistant">
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills" style="background-color: #fff;">
+        <div class="section-title" data-aos="fade-up">
+            <h2>My Superpowers</h2>
+            <div class="bar"></div>
+        </div>
+
+        <div class="skills-container">
+            <!-- Skill 1 -->
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-envelope-open-text"></i>
+                <h4>Email Mgmt</h4>
+            </div>
+            <!-- Skill 2 -->
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fab fa-instagram"></i>
+                <h4>Social Media</h4>
+            </div>
+            <!-- Skill 3 -->
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-calendar-check"></i>
+                <h4>Scheduling</h4>
+            </div>
+            <!-- Skill 4 -->
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-pen-fancy"></i>
+                <h4>Canva Design</h4>
+            </div>
+            <!-- Skill 5 -->
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="500">
+                <i class="fas fa-keyboard"></i>
+                <h4>Data Entry</h4>
+            </div>
+            <!-- Skill 6 -->
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="600">
+                <i class="fas fa-search-dollar"></i>
+                <h4>Research</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fun Stats Banner -->
+    <div class="fun-banner" data-aos="fade-in">
+        <div class="stat">
+            <h3>3+</h3>
+            <p>Years Experience</p>
+        </div>
+        <div class="stat">
+            <h3>50+</h3>
+            <p>Happy Clients</p>
+        </div>
+        <div class="stat">
+            <h3>100%</h3>
+            <p>Coffee Fueled</p>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="section-title" data-aos="fade-up">
+            <h2>What I Can Do For You</h2>
+            <div class="bar"></div>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-item" data-aos="fade-up">
+                <div style="background: #fff0f3; width: 50px; height: 50px; border-radius: 50%; display:flex; align-items:center; justify-content:center; margin-bottom:1rem;">
+                    <i class="fas fa-tasks" style="color: var(--primary); font-size: 1.2rem;"></i>
+                </div>
+                <h3>Admin Support</h3>
+                <p>Inbox zero is my favorite game. I handle emails, schedule appointments, and organize files so you don't have to.</p>
+            </div>
+
+            <div class="service-item" data-aos="fade-up" data-aos-delay="200">
+                <div style="background: #fff0f3; width: 50px; height: 50px; border-radius: 50%; display:flex; align-items:center; justify-content:center; margin-bottom:1rem;">
+                    <i class="fas fa-hashtag" style="color: var(--primary); font-size: 1.2rem;"></i>
+                </div>
+                <h3>Social Media</h3>
+                <p>Creating cute graphics in Canva, scheduling posts, and engaging with your community to keep your brand buzzing.</p>
+            </div>
+
+            <div class="service-item" data-aos="fade-up" data-aos-delay="400">
+                <div style="background: #fff0f3; width: 50px; height: 50px; border-radius: 50%; display:flex; align-items:center; justify-content:center; margin-bottom:1rem;">
+                    <i class="fas fa-plane-departure" style="color: var(--primary); font-size: 1.2rem;"></i>
+                </div>
+                <h3>Lifestyle Mgmt</h3>
+                <p>Need travel bookings? Gift research? Restaurant reservations? I'm your personal concierge.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" data-aos="zoom-in">
+        <h2>Ready to reclaim your time?</h2>
+        <p style="margin-bottom: 2rem; color: #666;">Let's chat about how I can help your business bloom.</p>
+        
+        <!-- CALENDLY BUTTON IMPLEMENTATION -->
+        <a href="https://calendly.com/" target="_blank" class="btn-primary pulsing-btn" style="padding: 1rem 2.5rem; font-size: 1.2rem;">
+            <i class="far fa-calendar-check"></i> Schedule a Free Discovery Call
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="mailto:email@example.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p>&copy; 2023 Ramil Flaviano Jr. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Script for Animations -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-out-cubic'
+        });
+    </script>
+</body>
+</html>

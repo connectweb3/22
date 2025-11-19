@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ramil Flaviano Jr - Professional Virtual Assistant Portfolio">
+    <title>Ramil Flaviano Jr. | Virtual Assistant</title>
+    
+    <!-- Google Fonts: Poppins (Body) and Great Vibes (Calligraphy) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --bg-dark: #0a0a0a;
+            --bg-card: #161616;
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0b0;
+            --accent-gold: #D4AF37; /* Gold for luxury feel */
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --font-script: 'Great Vibes', cursive;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .script-font {
+            font-family: var(--font-script);
+            font-weight: 400;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: linear-gradient(45deg, var(--accent-gold), #f3d277);
+            color: var(--bg-dark);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 50px;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            font-family: var(--font-script);
+            font-size: 2rem;
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #0a0a0a 100%);
+        }
+
+        /* Subtle background abstract shape */
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: var(--accent-gold);
+            opacity: 0.03;
+            filter: blur(100px);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-subtitle {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .hero-title {
+            font-family: var(--font-script);
+            font-size: 5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            background: -webkit-linear-gradient(45deg, #fff, #ccc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- SKILLS SECTION --- */
+        .skills-section {
+            padding: 100px 0;
+            background-color: #0d0d0d;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-family: var(--font-script);
+            font-size: 3.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 35px 25px;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .skill-icon {
+            font-size: 2rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+
+        .skill-name {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .skill-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* --- CTA SECTION --- */
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(to top, var(--bg-dark), #111);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 3.5rem; }
+            .nav { padding: 20px; }
+            .section-title { font-size: 2.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">Ramil F.</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-subtitle">Efficiency & Excellence</p>
+            <h1 class="hero-title">Ramil Flaviano Jr.</h1>
+            <p class="hero-desc">
+                A high-level Virtual Assistant dedicated to streamlining your workflow. 
+                I handle the chaos so you can focus on the growth.
+            </p>
+            
+            <!-- CALENDLY BUTTON -->
+            <!-- Replace the href below with your actual Calendly link -->
+            <a href="https://calendly.com/" target="_blank" class="btn">
+                <i class="far fa-calendar-alt" style="margin-right: 8px;"></i> Schedule a Meeting
+            </a>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">My Expertise</h2>
+                <p style="color: var(--text-secondary);">Professional tools and capabilities</p>
+            </div>
+
+            <div class="skills-grid">
+                <!-- Skill 1 -->
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-tasks"></i></div>
+                    <h3 class="skill-name">Project Management</h3>
+                    <p class="skill-desc">Expert in Notion, Trello, and Asana. Organizing your roadmap to ensure timely delivery.</p>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="far fa-envelope"></i></div>
+                    <h3 class="skill-name">Email & Calendar</h3>
+                    <p class="skill-desc">Inbox Zero strategies and complex scheduling coordination across multiple time zones.</p>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-headset"></i></div>
+                    <h3 class="skill-name">Customer Support</h3>
+                    <p class="skill-desc">Delivering empathetic, high-quality support via Zendesk, Intercom, or freshdesk.</p>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3 class="skill-name">Data Entry & Research</h3>
+                    <p class="skill-desc">Accurate data management, lead generation, and market research to fuel your decisions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Contact -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="section-title" style="font-size: 3rem;">Let's Work Together</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 30px; max-width: 500px; margin-left: auto; margin-right: auto;">
+                Ready to reclaim your time? Book a free discovery call to see how I can support your business.
+            </p>
+            <a href="https://calendly.com/" target="_blank" class="btn">
+                Book Consultation
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Ramil Flaviano Jr. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

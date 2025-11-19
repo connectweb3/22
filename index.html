@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>22portfolio list</title>
+    
+    <!-- Premium Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <style>
+        /* --- CORE AESTHETICS --- */
+        :root {
+            --bg-deep: #030303;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-hover: rgba(255, 255, 255, 0.07);
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --accent: #ffffff;
+            --transition: cubic-bezier(0.16, 1, 0.3, 1); /* Apple-style ease */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- THREE.JS CANVAS --- */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1; /* Behind everything */
+            opacity: 0.6; /* Subtle blend */
+            pointer-events: none;
+        }
+
+        /* --- LAYOUT --- */
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* --- HERO SECTION --- */
+        header {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            background: linear-gradient(180deg, #fff 0%, #aaa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            max-width: 500px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border: 1px solid var(--glass-border);
+            border-radius: 100px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+        }
+
+        /* --- GRID SYSTEM --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 40px;
+            padding-bottom: 150px;
+        }
+
+        /* --- PREMIUM CARD --- */
+        .card {
+            display: block;
+            text-decoration: none;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.6s var(--transition);
+            position: relative;
+            opacity: 0; /* For animation entry */
+            animation: fadeUp 1s var(--transition) forwards;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.01);
+            background: var(--glass-hover);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        }
+
+        /* The Browser Frame inside the card */
+        .preview-window {
+            width: 100%;
+            height: 280px;
+            position: relative;
+            border-bottom: 1px solid var(--glass-border);
+            overflow: hidden;
+            background: #000;
+        }
+
+        /* Iframe Handling */
+        .iframe-container {
+            width: 1440px; /* Simulated Desktop Width */
+            height: 900px;
+            transform-origin: 0 0;
+            transform: scale(0.28); /* Dynamically calculated in JS, but default here */
+            background: #111;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            pointer-events: none; /* Interaction disabled in preview */
+        }
+
+        /* Card Meta Info */
+        .card-info {
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .info-left h3 {
+            font-size: 1.1rem;
+            color: #fff;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .info-left p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-family: monospace;
+        }
+
+        .view-arrow {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            transition: 0.3s;
+        }
+
+        .card:hover .view-arrow {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 3D Background -->
+    <div id="canvas-container"></div>
+
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <header>
+            <span class="badge">22portfolio list</span>
+            <h1>The new standard<br>for web design.</h1>
+            <p class="subtitle">A curated marketplace of high-fidelity interfaces. Select a template to view the live build.</p>
+        </header>
+
+        <div class="grid" id="grid">
+            <!-- Cards Injected via JS -->
+        </div>
+    </div>
+
+    <!-- LOGIC -->
+    <script>
+        /* -------------------------------------------------------------------------- */
+        /* PART 1: THREE.JS BACKGROUND (The "Trillion Dollar" Look)                   */
+        /* -------------------------------------------------------------------------- */
+        const initThreeJS = () => {
+            const container = document.getElementById('canvas-container');
+            
+            // Scene Setup
+            const scene = new THREE.Scene();
+            // Fog gives it depth and hides the edges
+            scene.fog = new THREE.FogExp2(0x030303, 0.001);
+
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            camera.position.z = 500;
+
+            const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            container.appendChild(renderer.domElement);
+
+            // Create Particles (Starfield)
+            const geometry = new THREE.BufferGeometry();
+            const count = 3000; // Number of particles
+            const posArray = new Float32Array(count * 3);
+
+            for(let i = 0; i < count * 3; i++) {
+                // Random spread
+                posArray[i] = (Math.random() - 0.5) * 2000; 
+            }
+
+            geometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+            const material = new THREE.PointsMaterial({
+                size: 2,
+                color: 0xffffff,
+                transparent: true,
+                opacity: 0.6,
+                blending: THREE.AdditiveBlending
+            });
+
+            const particlesMesh = new THREE.Points(geometry, material);
+            scene.add(particlesMesh);
+
+            // Animation Loop
+            let mouseX = 0;
+            let mouseY = 0;
+
+            // Gentle camera sway based on mouse
+            document.addEventListener('mousemove', (event) => {
+                mouseX = event.clientX - window.innerWidth / 2;
+                mouseY = event.clientY - window.innerHeight / 2;
+            });
+
+            const animate = () => {
+                requestAnimationFrame(animate);
+
+                // Rotate the galaxy slowly
+                particlesMesh.rotation.y += 0.0005;
+                particlesMesh.rotation.x += 0.0002;
+
+                // Subtle interaction
+                camera.position.x += (mouseX * 0.1 - camera.position.x) * 0.05;
+                camera.position.y += (-mouseY * 0.1 - camera.position.y) * 0.05;
+
+                renderer.render(scene, camera);
+            };
+
+            animate();
+
+            // Handle Window Resize
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        };
+
+        initThreeJS();
+
+
+        /* -------------------------------------------------------------------------- */
+        /* PART 2: PORTFOLIO GRID GENERATION (Live Previews)                          */
+        /* -------------------------------------------------------------------------- */
+        const grid = document.getElementById('grid');
+        const totalItems = 15;
+
+        for (let i = 1; i <= totalItems; i++) {
+            const fileName = `${i}.html`;
+
+            const card = document.createElement('a');
+            card.href = fileName;
+            card.className = 'card';
+            
+            // Stagger animation delay
+            card.style.animationDelay = `${i * 0.1}s`;
+
+            card.innerHTML = `
+                <div class="preview-window" id="wrapper-${i}">
+                    <div class="iframe-container">
+                        <iframe src="${fileName}" loading="lazy" scrolling="no"></iframe>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <div class="info-left">
+                        <h3>Concept 0${i}</h3>
+                        <p>${fileName}</p>
+                    </div>
+                    <div class="view-arrow">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </div>
+            `;
+
+            grid.appendChild(card);
+        }
+
+        /* -------------------------------------------------------------------------- */
+        /* PART 3: DYNAMIC IFRAME SCALING                                             */
+        /* -------------------------------------------------------------------------- */
+        // This ensures the iframe shrinks perfectly to fit the card width
+        function resizeIframes() {
+            const wrappers = document.querySelectorAll('.preview-window');
+            
+            wrappers.forEach(wrapper => {
+                const container = wrapper.querySelector('.iframe-container');
+                if(!container) return;
+
+                // We assume the website is designed for 1440px width
+                const designWidth = 1440;
+                const actualCardWidth = wrapper.clientWidth;
+                
+                const scale = actualCardWidth / designWidth;
+                
+                container.style.transform = `scale(${scale})`;
+                // Adjust height container to match the scaled iframe height
+                // 900 is the base height defined in CSS
+                container.style.marginBottom = `-${900 - (900 * scale)}px`; 
+            });
+        }
+
+        // Run on load and resize
+        window.addEventListener('load', resizeIframes);
+        window.addEventListener('resize', resizeIframes);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramil Flaviano Jr. | Professional Virtual Assistant</title>
+    <meta name="description" content="Portfolio of Ramil Flaviano Jr. - High-end Virtual Assistant Services">
+    
+    <!-- Tailwind CSS (SOTA Utility Framework) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Playfair Display (Elegant) & Inter (Clean) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Calendly CSS -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-bg': '#FDFBF7',     /* Warm Cream */
+                        'brand-text': '#2D2D2D',   /* Soft Black */
+                        'brand-accent': '#C58985', /* Muted Rose/Blush */
+                        'brand-secondary': '#E8E4DE'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom overrides */
+        body { background-color: #FDFBF7; color: #2D2D2D; }
+        .glass-nav {
+            background: rgba(253, 251, 247, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 70% 30%, rgba(197, 137, 133, 0.1) 0%, rgba(253, 251, 247, 0) 60%);
+        }
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(197, 137, 133, 0.2);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-accent selection:text-white relative">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="font-serif text-2xl font-bold tracking-wide text-brand-text">
+                Ramil F.
+            </a>
+            
+            <div class="hidden md:flex space-x-8 items-center font-medium text-sm tracking-wide text-gray-600">
+                <a href="#home" class="hover:text-brand-accent transition">Home</a>
+                <a href="#about" class="hover:text-brand-accent transition">About</a>
+                <a href="#skills" class="hover:text-brand-accent transition">Skills</a>
+                <a href="#services" class="hover:text-brand-accent transition">Services</a>
+                <!-- Calendly Button -->
+                <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/'});return false;" 
+                        class="bg-brand-text text-white px-6 py-2.5 rounded-full hover:bg-brand-accent transition duration-300 shadow-lg">
+                    Book a Call
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-2xl" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-bg border-b border-brand-secondary p-6 flex flex-col space-y-4">
+            <a href="#home" onclick="toggleMenu()">Home</a>
+            <a href="#about" onclick="toggleMenu()">About</a>
+            <a href="#skills" onclick="toggleMenu()">Skills</a>
+            <a href="#services" onclick="toggleMenu()">Services</a>
+            <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/'});return false;" class="text-brand-accent font-bold">Book a Call</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20 hero-gradient">
+        <div class="max-w-6xl mx-auto px-6 w-full grid md:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-up" data-aos-duration="1000">
+                <p class="text-brand-accent font-medium tracking-widest uppercase mb-4 text-sm">Virtual Assistant & Creative Strategist</p>
+                <h1 class="font-serif text-5xl md:text-7xl font-bold leading-tight mb-6 text-brand-text">
+                    Efficient. <br>
+                    Elegant. <br>
+                    <span class="italic text-brand-accent">Executed.</span>
+                </h1>
+                <p class="text-gray-600 text-lg leading-relaxed mb-8 max-w-md">
+                    Hi, I'm <strong>Ramil Flaviano Jr</strong>. I help entrepreneurs reclaim their time by handling the chaos of administration, schedule management, and digital operations with grace and precision.
+                </p>
+                <div class="flex gap-4">
+                    <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/'});return false;" 
+                            class="bg-brand-accent text-white px-8 py-3 rounded-full hover:bg-brand-text transition duration-300 shadow-xl transform hover:-translate-y-1">
+                        Schedule Consultation
+                    </button>
+                    <a href="#portfolio" class="px-8 py-3 border border-gray-300 rounded-full hover:border-brand-text transition duration-300">
+                        View Work
+                    </a>
+                </div>
+            </div>
+            
+            <div class="relative" data-aos="fade-left" data-aos-duration="1200">
+                <!-- Placeholder for professional woman image as requested (using Unsplash) -->
+                <div class="aspect-[4/5] rounded-t-full overflow-hidden border-4 border-white shadow-2xl bg-gray-200 relative z-10">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Ramil Flaviano Jr - Virtual Assistant" 
+                         class="w-full h-full object-cover">
+                </div>
+                <!-- Decorative Circle -->
+                <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-brand-secondary rounded-full -z-0 opacity-50"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="font-serif text-3xl md:text-4xl font-bold mb-6" data-aos="fade-up">More Than Just an Assistant</h2>
+            <p class="text-gray-600 leading-loose text-lg mb-8" data-aos="fade-up" data-aos-delay="100">
+                With a background in administrative excellence and a passion for organization, I bridge the gap between your vision and your daily operations. I don't just check off to-do lists; I implement systems that allow your business to breathe. My approach is proactive, calm, and detail-oriented.
+            </p>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12 border-t border-gray-100 pt-12" data-aos="fade-up" data-aos-delay="200">
+                <div>
+                    <h3 class="font-serif text-3xl text-brand-accent">5+</h3>
+                    <p class="text-sm text-gray-500 mt-2">Years Experience</p>
+                </div>
+                <div>
+                    <h3 class="font-serif text-3xl text-brand-accent">100%</h3>
+                    <p class="text-sm text-gray-500 mt-2">Client Satisfaction</p>
+                </div>
+                <div>
+                    <h3 class="font-serif text-3xl text-brand-accent">24/7</h3>
+                    <p class="text-sm text-gray-500 mt-2">Flexible Support</p>
+                </div>
+                <div>
+                    <h3 class="font-serif text-3xl text-brand-accent">50+</h3>
+                    <p class="text-sm text-gray-500 mt-2">Projects Done</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section (Requested) -->
+    <section id="skills" class="py-20 bg-brand-bg">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-brand-accent uppercase tracking-widest text-xs font-bold">Capabilities</span>
+                <h2 class="font-serif text-4xl mt-3">My Skill Set</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Admin Support -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-brand-secondary skill-card transition-all" data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-12 h-12 bg-brand-bg rounded-full flex items-center justify-center text-brand-accent text-xl mb-6">
+                        <i class="fa-regular fa-calendar-check"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold mb-4">Admin Support</h3>
+                    <ul class="space-y-2 text-gray-600 text-sm">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent text-xs mr-2"></i> Calendar Management</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent text-xs mr-2"></i> Email & Inbox Detox</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent text-xs mr-2"></i> Travel Arrangements</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent text-xs mr-2"></i> Data Entry & Research</li>
+                    </ul>
+                </div>
+
+                <!-- Tech & Tools -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-brand-secondary skill-card transition-all" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-12 h-12 bg-brand-bg rounded-full flex items-center justify-center text-brand-accent text-xl mb-6">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold mb-4">Tech Stack</h3>
+                    <ul class="space-y-2 text-gray-600 text-sm">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent text-xs mr-2"></i> Google Workspace & MS Office</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent text-xs mr-2"></i> Notion / Trello / Asana</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent text-xs mr-2"></i> CRM Management (Hubspot)</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent text-xs mr-2"></i> Slack / Zoom / Teams</li>
+                    </ul>
+                </div>
+
+                <!-- Creative & Social -->
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-brand-secondary skill-card transition-all" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-12 h-12 bg-brand-bg rounded-full flex items-center justify-center text-brand-accent text-xl mb-6">
+                        <i class="fa-solid fa-paintbrush"></i>
+                    </div>
+                    <h3 class="font-serif text-xl font-bold mb-4">Creative & Social</h3>
+                    <ul class="space-y-2 text-gray-600 text-sm">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent text-xs mr-2"></i> Canva Graphic Design</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent text-xs mr-2"></i> Social Media Scheduling</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent text-xs mr-2"></i> Basic Video Editing (CapCut)</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-accent text-xs mr-2"></i> Copywriting & Newsletters</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services / Packages -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="font-serif text-4xl mb-6">Curated Packages for Your Needs</h2>
+                    <p class="text-gray-600 mb-6">Whether you need ad-hoc assistance or a dedicated partner for your business growth, I have a solution that fits.</p>
+                    <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/'});return false;" class="text-brand-accent font-bold hover:underline underline-offset-4">Compare Packages &rarr;</a>
+                </div>
+                <div class="space-y-4" data-aos="fade-left">
+                    <!-- Service Item -->
+                    <div class="flex items-start p-4 hover:bg-brand-bg rounded-lg transition">
+                        <span class="text-2xl mr-4">✨</span>
+                        <div>
+                            <h4 class="font-bold text-lg">The Executive Retainer</h4>
+                            <p class="text-sm text-gray-500">20-40 hours/month dedicated support for ongoing management.</p>
+                        </div>
+                    </div>
+                    <!-- Service Item -->
+                    <div class="flex items-start p-4 hover:bg-brand-bg rounded-lg transition">
+                        <span class="text-2xl mr-4">🚀</span>
+                        <div>
+                            <h4 class="font-bold text-lg">Project Launch</h4>
+                            <p class="text-sm text-gray-500">Intensive support for course launches, events, or rebrands.</p>
+                        </div>
+                    </div>
+                    <!-- Service Item -->
+                    <div class="flex items-start p-4 hover:bg-brand-bg rounded-lg transition">
+                        <span class="text-2xl mr-4">📥</span>
+                        <div>
+                            <h4 class="font-bold text-lg">Inbox & Calendar Detox</h4>
+                            <p class="text-sm text-gray-500">A one-time setup to reach Inbox Zero and organize your schedule.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 bg-brand-text text-white text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        <div class="relative z-10 max-w-3xl mx-auto px-6">
+            <h2 class="font-serif text-4xl md:text-5xl mb-6">Ready to streamline your workflow?</h2>
+            <p class="text-gray-300 mb-10 text-lg">Let's discuss how I can give you back 10+ hours a week.</p>
+            
+            <!-- Calendly Trigger -->
+            <button onclick="Calendly.initPopupWidget({url: 'https://calendly.com/'});return false;" 
+                    class="bg-brand-accent text-white text-lg px-10 py-4 rounded-full hover:bg-white hover:text-brand-text transition duration-300 shadow-2xl">
+                Schedule Your Free Discovery Call
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-bg border-t border-gray-200 pt-16 pb-8">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-8 md:mb-0">
+                <h3 class="font-serif text-2xl font-bold">Ramil Flaviano Jr.</h3>
+                <p class="text-xs text-gray-500 mt-2 uppercase tracking-wider">Virtual Assistant Services</p>
+            </div>
+            <div class="flex space-x-6 text-gray-400">
+                <a href="#" class="hover:text-brand-accent transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                <a href="#" class="hover:text-brand-accent transition"><i class="fa-brands fa-instagram text-xl"></i></a>
+                <a href="#" class="hover:text-brand-accent transition"><i class="fa-regular fa-envelope text-xl"></i></a>
+            </div>
+        </div>
+        <div class="text-center text-gray-400 text-xs mt-12">
+            &copy; 2024 Ramil Flaviano Jr. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <!-- Calendly Widget Script -->
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    
+    <!-- AOS Animation Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Animations
+        AOS.init({
+            once: true,
+            offset: 100,
+            duration: 800,
+            easing: 'ease-out-cubic',
+        });
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>

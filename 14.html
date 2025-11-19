@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramil Flaviano Jr. | Virtual Assistant</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Calendly Widget CSS -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+
+    <style>
+        /* --- VARIABLES & RESET --- */
+        :root {
+            --bg-dark: #0f0f0f;
+            --bg-card: #1a1a1a;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --accent-gold: #D4AF37; /* Elegant Gold */
+            --accent-gold-hover: #F4CF57;
+            --font-script: 'Great Vibes', cursive;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- TYPOGRAPHY --- */
+        .script-title {
+            font-family: var(--font-script);
+            color: var(--accent-gold);
+            font-weight: 400;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 2px;
+            background: var(--accent-gold);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 0;
+            background: rgba(15, 15, 15, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-script);
+            font-size: 2rem;
+            color: var(--accent-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-main);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .btn-primary {
+            padding: 12px 30px;
+            background: transparent;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-gold);
+            color: var(--bg-dark);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1e1e1e 0%, #0f0f0f 100%);
+        }
+
+        .hero-content h2 {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .hero-content h1 {
+            font-size: 6rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            color: var(--text-muted);
+        }
+
+        /* --- ABOUT --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-muted);
+        }
+
+        .stat-box {
+            background: var(--bg-card);
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            font-family: var(--font-serif);
+        }
+
+        /* --- SKILLS --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid transparent;
+        }
+
+        .skill-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--accent-gold);
+            transform: translateY(-10px);
+        }
+
+        .skill-icon {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+
+        .skill-name {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .skill-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* --- CONTACT --- */
+        .contact {
+            text-align: center;
+            background: #0a0a0a;
+        }
+
+        .social-links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+            transform: scale(1.1);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 3.5rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; } /* Simplified for static file */
+            .container { padding: 0 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Ramil Flaviano Jr.</a>
+                <ul class="nav-links">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Expertise</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <!-- Calendly Trigger Button -->
+                <button class="btn-primary" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/YOUR_LINK_HERE'});return false;">
+                    Schedule Call
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content" data-aos="fade-up">
+            <h2>Virtual Assistant & Strategist</h2>
+            <h1 class="script-title">Ramil Flaviano Jr.</h1>
+            <p>Elevating your business efficiency through organized, high-quality administrative and creative support.</p>
+            <div style="display: flex; justify-content: center; gap: 20px;">
+                <a href="#skills" class="btn-primary">My Skills</a>
+                <button class="btn-primary" style="background: var(--accent-gold); color: #000;" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/YOUR_LINK_HERE'});return false;">
+                    Book a Meeting
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text" data-aos="fade-right">
+                    <h3 class="section-title">About Me</h3>
+                    <p>Efficiency is not just a buzzword; it is my methodology. As a dedicated Virtual Assistant, I specialize in taking the chaos of daily operations and transforming it into streamlined success.</p>
+                    <p>With a keen eye for detail and a passion for digital organization, I help entrepreneurs reclaim their time. Whether it's managing complex calendars, handling customer relations, or content management, I deliver SOTA (State of the Art) results.</p>
+                    <img src="https://signature.freefire-name.com/img.php?f=8&t=Ramil%20Flaviano%20Jr" alt="Signature" style="filter: invert(1); width: 200px; opacity: 0.7;">
+                </div>
+                <div class="about-stats" data-aos="fade-left">
+                    <div class="stat-box">
+                        <div class="stat-number">100%</div>
+                        <div>Client Satisfaction</div>
+                    </div>
+                    <div class="stat-box" style="margin-top: 20px;">
+                        <div class="stat-number">24/7</div>
+                        <div>Reliable Support</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" style="background: #121212;">
+        <div class="container">
+            <div style="text-align: center;" data-aos="fade-up">
+                <h3 class="section-title">Professional Skillset</h3>
+                <p style="color: var(--text-muted);">Tools and technologies I leverage to grow your business</p>
+            </div>
+
+            <div class="skills-grid">
+                <!-- Skill 1 -->
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-calendar-check skill-icon"></i>
+                    <div class="skill-name">Calendar Management</div>
+                    <div class="skill-desc">Complex scheduling, timezone coordination, and appointment setting using Google Calendar & Calendly.</div>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-envelope-open-text skill-icon"></i>
+                    <div class="skill-name">Email Management</div>
+                    <div class="skill-desc">Inbox zero strategies, customer support ticketing, and professional correspondence.</div>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
+                    <i class="fas fa-chart-line skill-icon"></i>
+                    <div class="skill-name">Data Entry & CRM</div>
+                    <div class="skill-desc">Accurate data handling, CRM updates (HubSpot, Salesforce), and lead organization.</div>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-photo-video skill-icon"></i>
+                    <div class="skill-name">Social Media Mgmt</div>
+                    <div class="skill-desc">Basic graphic design (Canva), scheduling posts, and community engagement.</div>
+                </div>
+
+                <!-- Skill 5 -->
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="500">
+                    <i class="fas fa-file-invoice-dollar skill-icon"></i>
+                    <div class="skill-name">Invoicing & Admin</div>
+                    <div class="skill-desc">Preparing invoices, expense tracking, and general project management (Trello/Asana).</div>
+                </div>
+
+                <!-- Skill 6 -->
+                <div class="skill-card" data-aos="fade-up" data-aos-delay="600">
+                    <i class="fas fa-search skill-icon"></i>
+                    <div class="skill-name">Web Research</div>
+                    <div class="skill-desc">Lead generation, market research, and competitor analysis summaries.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container" data-aos="zoom-in">
+            <h2 class="script-title" style="font-size: 4rem; margin-bottom: 20px;">Let's Work Together</h2>
+            <p style="max-width: 600px; margin: 0 auto 40px; color: var(--text-muted);">
+                Ready to streamline your workflow? Book a free discovery call with me via Calendly, and let's discuss how I can assist you.
+            </p>
+            
+            <button class="btn-primary" style="font-size: 1.2rem; padding: 15px 40px;" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/YOUR_LINK_HERE'});return false;">
+                Open Calendar
+            </button>
+
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Ramil Flaviano Jr. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    
+    <!-- Calendly Widget Script -->
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+    
+    <!-- Animation On Scroll Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize Animations
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-out-cubic'
+        });
+
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ramil Flaviano Jr | Virtual Assistant</title>
+    
+    <!-- Google Fonts: Poppins (Headings) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Calendly CSS -->
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+
+    <style>
+        /* --- CORE VARIABLES & RESET --- */
+        :root {
+            --primary: #2563eb; /* Modern Blue */
+            --secondary: #1e293b; /* Slate Dark */
+            --accent: #3b82f6; /* Lighter Blue */
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--secondary);
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.39);
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- HEADER --- */
+        header {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding-top: 160px; /* Account for fixed header */
+            padding-bottom: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 90vh;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-tag {
+            background-color: #dbeafe;
+            color: var(--primary);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            position: relative;
+        }
+
+        .image-wrapper {
+            width: 450px;
+            height: 550px;
+            background-color: #e2e8f0;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow);
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- SKILLS SECTION --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            background: var(--bg-white);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f1f5f9;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .skill-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #eff6ff;
+            color: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .skill-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+
+        .skill-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* --- SERVICES/OFFER --- */
+        .services {
+            background-color: var(--bg-white);
+        }
+        
+        .service-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .service-item {
+            display: flex;
+            gap: 20px;
+        }
+
+        .check-icon {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+
+        .social-links {
+            margin: 30px 0;
+        }
+
+        .social-links a {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .copyright {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 968px) {
+            .hero {
+                flex-direction: column-reverse;
+                padding-top: 120px;
+                text-align: center;
+            }
+            
+            .hero-content {
+                margin-top: 50px;
+            }
+
+            .image-wrapper {
+                width: 100%;
+                max-width: 400px;
+                height: 400px;
+            }
+            
+            .nav-links {
+                display: none; /* Simple hide for this static demo */
+            }
+            
+            .service-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">RAMIL<span>.VA</span></div>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#services">Services</a>
+                    <!-- Link triggers Calendly Modal -->
+                    <a href="#" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/YOUR_LINK_HERE'});return false;" style="color: var(--primary); font-weight: 600;">Book a Call</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero container" id="about">
+        <div class="hero-content">
+            <span class="hero-tag">Professional Virtual Assistant</span>
+            <h1>Elevate Your Productivity with <br><span>Ramil Flaviano Jr.</span></h1>
+            <p>I handle the chaos so you can focus on the growth. Organized, efficient, and tech-savvy virtual assistance tailored to your business needs.</p>
+            
+            <!-- ACTION REQUIRED: Replace 'YOUR_LINK_HERE' with your actual Calendly URL -->
+            <button class="btn" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/YOUR_LINK_HERE'});return false;">
+                <i class="fa-regular fa-calendar-check"></i> Schedule a Free Strategy Call
+            </button>
+        </div>
+        <div class="hero-image">
+            <div class="image-wrapper">
+                <!-- ACTION REQUIRED: Replace src with your actual photo URL or local file path -->
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ramil Flaviano Jr">
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section-padding" id="skills">
+        <div class="container">
+            <h2 class="section-title">My Expertise</h2>
+            <p class="section-subtitle">I bring a diverse toolkit to the table, ensuring your operations run smoothly and efficiently.</p>
+            
+            <div class="skills-grid">
+                <!-- Skill 1 -->
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+                    <h3>Email Management</h3>
+                    <p>Inbox zero strategies, filtering, labeling, and professional correspondence management.</p>
+                </div>
+
+                <!-- Skill 2 -->
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-solid fa-calendar-day"></i></div>
+                    <h3>Calendar Management</h3>
+                    <p>Scheduling meetings, coordinating time zones, and managing appointment reminders.</p>
+                </div>
+
+                <!-- Skill 3 -->
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    <h3>Web Research</h3>
+                    <p>Data mining, lead generation, competitor analysis, and market research.</p>
+                </div>
+
+                <!-- Skill 4 -->
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-brands fa-google"></i></div>
+                    <h3>Google Suite / Office 365</h3>
+                    <p>Expert proficiency in Sheets, Docs, Slides, Excel, and cloud organization.</p>
+                </div>
+
+                <!-- Skill 5 -->
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-solid fa-share-nodes"></i></div>
+                    <h3>Social Media Admin</h3>
+                    <p>Scheduling posts, community engagement, and basic graphic design (Canva).</p>
+                </div>
+
+                <!-- Skill 6 -->
+                <div class="skill-card">
+                    <div class="skill-icon"><i class="fa-solid fa-headset"></i></div>
+                    <h3>Customer Support</h3>
+                    <p>Handling inquiries via email or chat with a high level of empathy and professionalism.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services / Why Me -->
+    <section class="section-padding services" id="services">
+        <div class="container">
+            <div style="background: var(--secondary); border-radius: 20px; padding: 60px; color: white; display: flex; flex-wrap: wrap; align-items: center;">
+                <div style="flex: 1; min-width: 300px; padding-right: 40px;">
+                    <h2 style="color: white; margin-bottom: 20px;">Why work with me?</h2>
+                    <p style="color: #cbd5e1; margin-bottom: 30px;">I don't just complete tasks; I create systems. My goal is to buy you back your time so you can focus on high-level decision making.</p>
+                    <button class="btn" style="background: white; color: var(--secondary);" onclick="Calendly.initPopupWidget({url: 'https://calendly.com/YOUR_LINK_HERE'});return false;">
+                        Lets Chat
+                    </button>
+                </div>
+                <div style="flex: 1; min-width: 300px; margin-top: 30px;">
+                    <div class="service-item" style="margin-bottom: 20px;">
+                        <i class="fa-solid fa-circle-check" style="color: var(--accent);"></i>
+                        <div>
+                            <h4 style="color: white;">Reliable Communication</h4>
+                            <p style="color: #cbd5e1; font-size: 0.9rem;">Daily reports and instant updates via Slack/Teams.</p>
+                        </div>
+                    </div>
+                    <div class="service-item" style="margin-bottom: 20px;">
+                        <i class="fa-solid fa-circle-check" style="color: var(--accent);"></i>
+                        <div>
+                            <h4 style="color: white;">Data Security</h4>
+                            <p style="color: #cbd5e1; font-size: 0.9rem;">Your passwords and data are handled with strict confidentiality.</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <i class="fa-solid fa-circle-check" style="color: var(--accent);"></i>
+                        <div>
+                            <h4 style="color: white;">Proactive Attitude</h4>
+                            <p style="color: #cbd5e1; font-size: 0.9rem;">I anticipate problems before they happen.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h2>Ramil Flaviano Jr.</h2>
+            <p>Your Strategic Virtual Assistant</p>
+            
+            <div class="social-links">
+                <!-- Add your actual social links here -->
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#"><i class="fa-regular fa-envelope"></i></a>
+            </div>
+
+            <div class="copyright">
+                &copy; 2023 Ramil Flaviano Jr. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Calendly Script -->
+    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+</body>
+</html>
